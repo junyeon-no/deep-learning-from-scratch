@@ -23,7 +23,7 @@ test_acc_list = []
 
 # 1에폭당 반복 수
 iter_per_epoch = max(train_size / batch_size, 1)
-
+print('iter_per_epoch = ', iter_per_epoch)
 for i in range(iters_num):
     # 미니배치 획득
     batch_mask = np.random.choice(train_size, batch_size)
@@ -49,12 +49,14 @@ for i in range(iters_num):
         train_acc_list.append(train_acc)
         test_acc_list.append(test_acc)
         print("train acc, test acc | " + str(train_acc) + ", " + str(test_acc))
+        print('in')
 
 # 그래프 그리기
 markers = {'train': 'o', 'test': 's'}
 x = np.arange(len(train_acc_list))
 plt.plot(x, train_acc_list, label='train acc')
 plt.plot(x, test_acc_list, label='test acc', linestyle='--')
+
 plt.xlabel("epochs")
 plt.ylabel("accuracy")
 plt.ylim(0, 1.0)
